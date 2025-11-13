@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+const int SIZE = 4;
+double sumColumn(const double m[][SIZE], int rowSize, int columnIndex);
+
+int main() {
+    int row;
+    int columnIndex;
+    const int MAX_ROW_SIZE = 100;
+    double m[MAX_ROW_SIZE][SIZE];
+    cout << "Enter row size (max " << MAX_ROW_SIZE << "): ";
+    cin >> row;
+    if (row <= 0 || row > MAX_ROW_SIZE) {
+        cout << "Invalid row size. Exiting." << endl;
+        return 1;
+    }
+    cout << "Enter column index (0 to " << SIZE - 1 << "): ";
+    cin >> columnIndex;
+    if (columnIndex < 0 || columnIndex >= SIZE) {
+        cout << "Invalid column index. Exiting." << endl;
+        return 1;
+    }
+
+    cout << "Enter the matrix elements (" << row << " rows, " << SIZE << " columns):" << endl;
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            cin >> m[i][j];
+        }
+    }
+    double sum = sumColumn(m, row, columnIndex);
+
+    cout << "The sum of elements in column index " << columnIndex << " is: " << sum << endl;
+
+    return 0;
+}
+double sumColumn(const double m[][SIZE], int rowSize, int columnIndex) {
+    double sum = 0.0;
+    for (int i = 0; i < rowSize; i++) {
+        sum += m[i][columnIndex];
+    }
+    return sum;
+}
