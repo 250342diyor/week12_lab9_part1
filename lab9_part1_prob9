@@ -1,0 +1,32 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main(){
+   vector<int> numbers;
+    int n;
+    cout << "n =  ";
+    cin >> n;
+    int x, min, max, sum=0, aver=0;
+
+    for(int i=0; i<n; i++){
+    cin >> x;
+    numbers.push_back(x);
+    }
+    min = numbers.at(0);
+    max = numbers.at(0);
+    for(int i=0; i<n; i++){
+
+        if(numbers.at(i)<min)
+                min = numbers.at(i);
+        if(numbers.at(i)>max)
+                max = numbers.at(i);
+        sum += numbers.at(i);
+
+    }
+    aver = sum/n;
+cout << "Minimum: " << min << endl;
+
+    cout << "Maximum: " << max << endl;
+    cout << "Average: " << aver << endl;
+    return 0;
+}
