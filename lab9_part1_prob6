@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    if (!(cin >> n >> m)) return 0;
+
+    vector<vector<double>> matrix(n, vector<double>(m));
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        double sum = 0.0;
+        for (int j = 0; j < m; ++j) {
+            sum += matrix[i][j];
+        }
+
+        double average = (m > 0) ? sum / m : 0.0;
+        
+        // Manual one-decimal place formatting
+        long long temp = (long long)(average * 10 + 0.5);
+        int integerPart = temp / 10;
+        int fractionalPart = temp % 10;
+
+        cout << "Average of row " << i << " = " << integerPart << "." << fractionalPart << endl;
+    }
+
+    return 0;
+}
