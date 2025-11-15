@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "The matrix is symmetric." << endl;
+        return 0;
+    }
+
+    vector<vector<int>> matrix(n, vector<int>(n));
+    bool symmetric = true;
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (matrix[i][j] != matrix[j][i]) {
+                symmetric = false;
+                break;
+            }
+        }
+        if (!symmetric) break;
+    }
+
+    if (symmetric) {
+        cout << "The matrix is symmetric." << endl;
+    } else {
+        cout << "The matrix is not symmetric." << endl;
+    }
+
+    return 0;
+}
